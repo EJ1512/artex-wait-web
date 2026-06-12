@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ArtEx | Retail artist contract market</title>
+    <meta
+      name="description"
+      content="ArtEx lets retail investors and music fans trade artist contracts that grow with an artist's rise before the world catches on."
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://i.scdn.co; connect-src 'self' https://epbvkvbjqjaipbnhlshr.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="ArtEx home">
+        <span class="wordmark-art">Art</span><span class="wordmark-ex">Ex</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#market">Market</a>
+        <a href="#signals">Signals</a>
+        <a href="#waitlist">Join waitlist</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell" data-panel="home">
+        <div class="hero-copy reveal">
+          <p class="kicker">Artist contract market</p>
+          <h1><span>Your taste</span><span>has value,</span><span>Finally.</span></h1>
+          <p class="hero-lede">
+            ArtEx lets retail investors and music fans trade artist contracts that grow with an artist's rise. Invest in your artist before they blow up.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#waitlist">Join the waitlist</a>
+          </div>
+        </div>
+
+        <div class="exchange-panel reveal" aria-label="Animated artist contract market preview">
+          <div class="chart-frame">
+            <div class="graph-head">
+              <div class="graph-artist">
+                <img
+                  class="graph-avatar"
+                  src="https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9"
+                  alt="DRKE Spotify artist profile image"
+                  data-graph-avatar
+                />
+                <span data-graph-name>DRKE</span>
+              </div>
+              <div class="graph-metric">
+                <strong data-graph-price>40.52</strong>
+                <span>pts</span>
+                <span class="graph-change up" data-graph-change><i aria-hidden="true">▲</i><b>4.32%</b></span>
+              </div>
+            </div>
+            <svg class="trend-chart" viewBox="0 0 760 360" role="img" aria-label="Minimal moving green upward artist trend graph" data-trend-chart>
+              <defs>
+                <linearGradient id="trendStroke" x1="0%" x2="100%" y1="0%" y2="0%">
+                  <stop offset="0%" stop-color="#62d98f" />
+                  <stop offset="52%" stop-color="#91dfaa" />
+                  <stop offset="100%" stop-color="#ddffe8" />
+                </linearGradient>
+                <filter id="trendBlur" x="-20%" y="-70%" width="140%" height="220%">
+                  <feGaussianBlur stdDeviation="6" />
+                </filter>
+              </defs>
+              <g class="floating-trend">
+                <path
+                  class="trend-line trend-glow"
+                  data-trend-glow
+                  d="M0 292 L20 278 L42 286 L64 270 L88 294 L112 254 L136 266 L160 236 L186 258 L210 224 L236 242 L262 214 L288 230 L314 198 L340 218 L368 188 L394 204 L422 176 L450 192 L478 168 L506 184 L534 154 L562 174 L590 146 L620 160 L650 138 L680 150 L724 126"
+                />
+                <path
+                  class="trend-line"
+                  data-trend-line
+                  d="M0 292 L20 278 L42 286 L64 270 L88 294 L112 254 L136 266 L160 236 L186 258 L210 224 L236 242 L262 214 L288 230 L314 198 L340 218 L368 188 L394 204 L422 176 L450 192 L478 168 L506 184 L534 154 L562 174 L590 146 L620 160 L650 138 L680 150 L724 126"
+                />
+                <path
+                  class="trend-line trend-scan"
+                  data-trend-scan
+                  d="M0 292 L20 278 L42 286 L64 270 L88 294 L112 254 L136 266 L160 236 L186 258 L210 224 L236 242 L262 214 L288 230 L314 198 L340 218 L368 188 L394 204 L422 176 L450 192 L478 168 L506 184 L534 154 L562 174 L590 146 L620 160 L650 138 L680 150 L724 126"
+                />
+                <g class="chart-dots">
+                  <circle cx="724" cy="126" r="6" data-trend-dot />
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <p class="preview-note">Preview uses illustrative signals only. No live prices, projections, or guaranteed outcomes are shown.</p>
+        </div>
+      </section>
+
+      <section id="market" class="section-shell editorial-section" data-panel="market">
+        <div class="market-intro">
+          <div class="section-heading reveal">
+            <p class="kicker">What is ArtEx</p>
+            <h2>A market where artist momentum becomes tradable.</h2>
+            <p>
+              Every ArtEx price is built from data: streaming numbers, audience growth, fan demand and many more live data points. For the first time, ArtEx turns that data into real liquidity you can trade.
+            </p>
+          </div>
+          <div class="market-radar reveal">
+            <svg class="radar-chart" viewBox="0 0 460 330" role="img" aria-label="Animated radar of the live artist data ArtEx prices from: streaming, positioning, conviction, momentum, volume and signal">
+              <defs>
+                <radialGradient id="radarGlow">
+                  <stop offset="0" stop-color="#f4efe4" stop-opacity="0.09" />
+                  <stop offset="1" stop-color="#f4efe4" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <circle cx="230" cy="165" r="100" fill="url(#radarGlow)" />
+              <g class="radar-spokes">
+                <line x1="230" y1="165" x2="230" y2="45" />
+                <line x1="230" y1="165" x2="334" y2="105" />
+                <line x1="230" y1="165" x2="334" y2="225" />
+                <line x1="230" y1="165" x2="230" y2="285" />
+                <line x1="230" y1="165" x2="126" y2="225" />
+                <line x1="230" y1="165" x2="126" y2="105" />
+              </g>
+              <polygon class="radar-ring" points="230,125 265,145 265,185 230,205 195,185 195,145" />
+              <polygon class="radar-ring" points="230,85 299,125 299,205 230,245 161,205 161,125" />
+              <polygon class="radar-ring ring-outer" points="230,45 334,105 334,225 230,285 126,225 126,105" />
+              <polygon class="radar-data" data-radar-polygon points="230,78.6 287.2,132 294.4,202.2 230,222.6 188.4,189 169.7,130.2" />
+              <g class="radar-vertices">
+                <circle class="radar-vertex" cx="230" cy="45" r="3">
+                  <animate attributeName="opacity" values="0.5;1;0.5" dur="3.6s" begin="0s" repeatCount="indefinite" />
+                </circle>
+                <circle class="radar-vertex" cx="334" cy="105" r="3">
+                  <animate attributeName="opacity" values="0.5;1;0.5" dur="3.6s" begin="0.6s" repeatCount="indefinite" />
+                </circle>
+                <circle class="radar-vertex" cx="334" cy="225" r="3">
+                  <animate attributeName="opacity" values="0.5;1;0.5" dur="3.6s" begin="1.2s" repeatCount="indefinite" />
+                </circle>
+                <circle class="radar-vertex" cx="230" cy="285" r="3">
+                  <animate attributeName="opacity" values="0.5;1;0.5" dur="3.6s" begin="1.8s" repeatCount="indefinite" />
+                </circle>
+                <circle class="radar-vertex" cx="126" cy="225" r="3">
+                  <animate attributeName="opacity" values="0.5;1;0.5" dur="3.6s" begin="2.4s" repeatCount="indefinite" />
+                </circle>
+                <circle class="radar-vertex" cx="126" cy="105" r="3">
+                  <animate attributeName="opacity" values="0.5;1;0.5" dur="3.6s" begin="3s" repeatCount="indefinite" />
+                </circle>
+              </g>
+              <circle class="radar-center" cx="230" cy="165" r="4.5">
+                <animate attributeName="r" values="4;5.2;4" dur="3s" repeatCount="indefinite" />
+              </circle>
+              <g class="radar-labels">
+                <text class="radar-label" x="230" y="26" text-anchor="middle">STREAMING</text>
+                <text class="radar-label" x="348" y="109" text-anchor="start">POSITIONING</text>
+                <text class="radar-label" x="348" y="229" text-anchor="start">CONVICTION</text>
+                <text class="radar-label" x="230" y="314" text-anchor="middle">MOMENTUM</text>
+                <text class="radar-label" x="112" y="229" text-anchor="end">VOLUME</text>
+                <text class="radar-label" x="112" y="109" text-anchor="end">SIGNAL</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="market-columns">
+          <article class="market-column reveal">
+            <h3>Artist contracts</h3>
+            <p>Every artist lists as a simple contract. Its price moves with the artist's real data, so anyone can back their read without industry access.</p>
+          </article>
+          <article class="market-column reveal">
+            <h3>Priced by data</h3>
+            <p>The pricing engine blends streaming data with many more data points — audience, demand, momentum and risk — into one clear contract price.</p>
+          </article>
+          <article class="market-column reveal">
+            <h3>Data becomes liquidity</h3>
+            <p>ArtEx, for the first time, uses this data to produce actual liquidity: a live, tradable market built on each artist's momentum.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="signals" class="section-shell signal-section" data-panel="signals">
+        <div class="section-heading reveal">
+          <p class="kicker">Pricing engine</p>
+          <h2>A pricing framework for artist contracts.</h2>
+          <p>
+            ArtEx weighs culture, demand, momentum, and risk so a rising artist can be understood through a clear contract-price model.
+          </p>
+        </div>
+        <div class="engine-flow reveal" aria-label="ArtEx pricing engine diagram">
+          <div class="signal-feed input-feed" aria-label="Streaming data inputs, illustrative preview">
+            <div class="feed-track">
+              <ul class="feed-list">
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Spotify</span><span class="feed-chip">High</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Daily streams</span><span class="feed-delta">+12.4%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Apple Music</span><span class="feed-chip">Med</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Library adds</span><span class="feed-delta">+6.8%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">TikTok</span><span class="feed-chip">Med</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Sound usage</span><span class="feed-delta">+18.2%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">YouTube Music</span><span class="feed-chip">High</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Watch velocity</span><span class="feed-delta">+9.7%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Deezer</span><span class="feed-chip">Med</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Active streams</span><span class="feed-delta">+9.0%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Amazon Music</span><span class="feed-chip">Med</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Prime plays</span><span class="feed-delta">+7.5%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Pandora</span><span class="feed-chip">Low</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Station adds</span><span class="feed-delta">+2.1%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Genius</span><span class="feed-chip">Med</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Annotation views</span><span class="feed-delta">+15.3%</span></div>
+                </li>
+              </ul>
+              <ul class="feed-list" aria-hidden="true">
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Spotify</span><span class="feed-chip">High</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Daily streams</span><span class="feed-delta">+12.4%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Apple Music</span><span class="feed-chip">Med</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Library adds</span><span class="feed-delta">+6.8%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">TikTok</span><span class="feed-chip">Med</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Sound usage</span><span class="feed-delta">+18.2%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">YouTube Music</span><span class="feed-chip">High</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Watch velocity</span><span class="feed-delta">+9.7%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Deezer</span><span class="feed-chip">Med</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Active streams</span><span class="feed-delta">+9.0%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Amazon Music</span><span class="feed-chip">Med</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Prime plays</span><span class="feed-delta">+7.5%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Pandora</span><span class="feed-chip">Low</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Station adds</span><span class="feed-delta">+2.1%</span></div>
+                </li>
+                <li class="feed-card">
+                  <div class="feed-card-top"><span class="feed-platform">Genius</span><span class="feed-chip">Med</span></div>
+                  <div class="feed-card-main"><span class="feed-metric">Annotation views</span><span class="feed-delta">+15.3%</span></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flow-field" aria-hidden="true">
+            <svg class="engine-network" viewBox="0 0 420 300" preserveAspectRatio="none">
+              <path class="stream-path" d="M6 24 L150 24 L300 150" />
+              <path class="stream-path" d="M6 74 L186 74 L300 150" />
+              <path class="stream-path" d="M6 124 L226 124 L300 150" />
+              <path class="stream-path" d="M6 176 L226 176 L300 150" />
+              <path class="stream-path" d="M6 226 L186 226 L300 150" />
+              <path class="stream-path" d="M6 276 L150 276 L300 150" />
+              <path class="stream-path stream-trunk" d="M300 150 L418 150" />
+              <circle class="data-packet" r="3.5">
+                <animateMotion dur="3.4s" repeatCount="indefinite" path="M6 24 L150 24 L300 150" />
+              </circle>
+              <circle class="data-packet packet-two" r="3.5">
+                <animateMotion dur="3.6s" begin="0.4s" repeatCount="indefinite" path="M6 74 L186 74 L300 150" />
+              </circle>
+              <circle class="data-packet packet-three" r="3.5">
+                <animateMotion dur="3.2s" begin="0.8s" repeatCount="indefinite" path="M6 124 L226 124 L300 150" />
+              </circle>
+              <circle class="data-packet packet-four" r="3.5">
+                <animateMotion dur="3.8s" begin="1.1s" repeatCount="indefinite" path="M6 176 L226 176 L300 150" />
+              </circle>
+              <circle class="data-packet packet-five" r="3.5">
+                <animateMotion dur="3.5s" begin="1.5s" repeatCount="indefinite" path="M6 226 L186 226 L300 150" />
+              </circle>
+              <circle class="data-packet packet-six" r="3.5">
+                <animateMotion dur="3.9s" begin="1.9s" repeatCount="indefinite" path="M6 276 L150 276 L300 150" />
+              </circle>
+              <circle class="data-packet" r="4">
+                <animateMotion dur="1.5s" repeatCount="indefinite" path="M300 150 L418 150" />
+              </circle>
+              <circle class="data-packet packet-three" r="4">
+                <animateMotion dur="1.5s" begin="0.75s" repeatCount="indefinite" path="M300 150 L418 150" />
+              </circle>
+            </svg>
+          </div>
+
+          <div class="artist-cards signal-feed artist-feed" aria-label="Example artist index quotes, illustrative preview">
+            <div class="feed-track">
+              <ul class="feed-list">
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5ebe2e8e7ff002a4afda1c7147e" alt="Taylor Swift" />
+                  <div class="artist-card-id"><strong>Taylor Swift</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>50.96 <em>pts</em></strong><span class="quote-change up"><i>▲</i>0.03%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9" alt="Drake" />
+                  <div class="artist-card-id"><strong>Drake</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>40.52 <em>pts</em></strong><span class="quote-change down"><i>▼</i>0.12%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5ebfd0a9fb6c252a3ba44079acf" alt="SZA" />
+                  <div class="artist-card-id"><strong>SZA</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>30.24 <em>pts</em></strong><span class="quote-change up"><i>▲</i>1.84%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5eb81f47f44084e0a09b5f0fa13" alt="Bad Bunny" />
+                  <div class="artist-card-id"><strong>Bad Bunny</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>46.97 <em>pts</em></strong><span class="quote-change up"><i>▲</i>2.05%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5ebc1719ac9e6a75c1c25835018" alt="The Weeknd" />
+                  <div class="artist-card-id"><strong>The Weeknd</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>44.87 <em>pts</em></strong><span class="quote-change down"><i>▼</i>0.21%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5eb6e835a500e791bf9c27a422a" alt="Kanye West" />
+                  <div class="artist-card-id"><strong>Kanye West</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>34.18 <em>pts</em></strong><span class="quote-change up"><i>▲</i>0.58%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5eb4a21b4760d2ecb7b0dcdc8da" alt="Billie Eilish" />
+                  <div class="artist-card-id"><strong>Billie Eilish</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>38.11 <em>pts</em></strong><span class="quote-change up"><i>▲</i>1.27%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5eb47de0bbc22f08b5ebe14bd6e" alt="Morgan Wallen" />
+                  <div class="artist-card-id"><strong>Morgan Wallen</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>36.40 <em>pts</em></strong><span class="quote-change up"><i>▲</i>0.74%</span></div>
+                </li>
+              </ul>
+              <ul class="feed-list" aria-hidden="true">
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5ebe2e8e7ff002a4afda1c7147e" alt="" />
+                  <div class="artist-card-id"><strong>Taylor Swift</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>50.96 <em>pts</em></strong><span class="quote-change up"><i>▲</i>0.03%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9" alt="" />
+                  <div class="artist-card-id"><strong>Drake</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>40.52 <em>pts</em></strong><span class="quote-change down"><i>▼</i>0.12%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5ebfd0a9fb6c252a3ba44079acf" alt="" />
+                  <div class="artist-card-id"><strong>SZA</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>30.24 <em>pts</em></strong><span class="quote-change up"><i>▲</i>1.84%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5eb81f47f44084e0a09b5f0fa13" alt="" />
+                  <div class="artist-card-id"><strong>Bad Bunny</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>46.97 <em>pts</em></strong><span class="quote-change up"><i>▲</i>2.05%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5ebc1719ac9e6a75c1c25835018" alt="" />
+                  <div class="artist-card-id"><strong>The Weeknd</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>44.87 <em>pts</em></strong><span class="quote-change down"><i>▼</i>0.21%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5eb6e835a500e791bf9c27a422a" alt="" />
+                  <div class="artist-card-id"><strong>Kanye West</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>34.18 <em>pts</em></strong><span class="quote-change up"><i>▲</i>0.58%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5eb4a21b4760d2ecb7b0dcdc8da" alt="" />
+                  <div class="artist-card-id"><strong>Billie Eilish</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>38.11 <em>pts</em></strong><span class="quote-change up"><i>▲</i>1.27%</span></div>
+                </li>
+                <li class="artist-card">
+                  <img class="artist-card-avatar" src="https://i.scdn.co/image/ab6761610000e5eb47de0bbc22f08b5ebe14bd6e" alt="" />
+                  <div class="artist-card-id"><strong>Morgan Wallen</strong><span>Index</span></div>
+                  <div class="artist-card-quote"><strong>36.40 <em>pts</em></strong><span class="quote-change up"><i>▲</i>0.74%</span></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="waitlist" class="section-shell waitlist-section" data-panel="waitlist">
+        <div class="waitlist-copy reveal">
+          <div class="headline-cycle-wrap" aria-live="polite" aria-atomic="true">
+            <h2 class="headline-phrase" data-phrase="0">Anyone can make a Spotify playlist. <span class="phrase-punch">Not everyone can profit from one.</span></h2>
+            <h2 class="headline-phrase" data-phrase="1">Still bragging about discovering them before they blew up? <span class="phrase-punch">Now, get rich with it.</span></h2>
+          </div>
+          <p class="waitlist-lede">ArtEx turns your ear for rising artists into a real position. Join for ArtEx updates before the market opens to everyone.</p>
+
+          <ul class="waitlist-perks" aria-label="What founding traders get">
+            <li>
+              <span class="perk-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <span class="perk-text"><strong>Founding updates</strong>First to hear when trading opens.</span>
+            </li>
+            <li>
+              <span class="perk-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <span class="perk-text"><strong>Artist drop updates</strong>Follow new listing signals before the crowd.</span>
+            </li>
+            <li>
+              <span class="perk-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <span class="perk-text"><strong>Practice-first learning</strong>Practice with virtual credits, no money in.</span>
+            </li>
+          </ul>
+
+          <div class="waitlist-cta-row" data-waitlist-cta>
+            <button class="button primary" type="button" data-show-form>
+              <span>Join the waitlist</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="waitlist-panel-right">
+          <form class="waitlist-form" data-waitlist-form novalidate>
+            <p class="form-eyebrow">Founding trader signup</p>
+            <label>
+              Email address
+              <input name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required />
+            </label>
+            <label>
+              Name <span class="label-optional">optional</span>
+              <input name="name" type="text" autocomplete="name" placeholder="What should we call you?" maxlength="120" />
+            </label>
+            <div class="hp-field" aria-hidden="true">
+              <label>
+                Company
+                <input name="company" type="text" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
+            <button class="button primary form-button" type="submit">
+              <span>Join the waitlist</span>
+            </button>
+            <p class="form-fineprint">
+              We only email you about ArtEx updates. No spam, leave anytime.
+              Read our <a href="privacy.html">Privacy Policy</a> or
+              <a href="contact.html">contact us</a>.
+            </p>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="waitlist-success" data-waitlist-success hidden>
+            <span class="success-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <h3 class="success-title">You're on the list.</h3>
+            <p class="success-body">We'll email <strong data-success-email>you</strong> when ArtEx has meaningful updates. Keep an eye out for a note from the ArtEx desk.</p>
+
+            <div class="success-share">
+              <p class="success-share-copy">Want in sooner? Send ArtEx to a friend who knows music.</p>
+              <button class="button ghost share-button" type="button" data-share-button>
+                <span data-share-label>Copy invite link</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span><span class="wordmark-art">Art</span><span class="wordmark-ex">Ex</span></span>
+      <nav aria-label="Footer links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
