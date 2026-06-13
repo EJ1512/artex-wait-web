@@ -609,35 +609,6 @@ if (form) {
   });
 }
 
-// Share / referral action on the success card.
-const shareButton = document.querySelector("[data-share-button]");
-const shareLabel = document.querySelector("[data-share-label]");
-if (shareButton && shareLabel) {
-  shareButton.addEventListener("click", async () => {
-    const link = window.location.origin + window.location.pathname;
-    try {
-      if (navigator.share) {
-        await navigator.share({ title: "Artex", text: "Trade artists before they blow up.", url: link });
-        return;
-      }
-      await navigator.clipboard.writeText(link);
-    } catch (error) {
-      const temp = document.createElement("input");
-      temp.value = link;
-      document.body.appendChild(temp);
-      temp.select();
-      try { document.execCommand("copy"); } catch (copyError) { /* no-op */ }
-      document.body.removeChild(temp);
-    }
-    shareButton.classList.add("is-copied");
-    shareLabel.textContent = "Link copied";
-    window.setTimeout(() => {
-      shareButton.classList.remove("is-copied");
-      shareLabel.textContent = "Copy invite link";
-    }, 2400);
-  });
-}
-
 // ── Waitlist headline cycling ─────────────────────────────
 const waitlistPanel = document.querySelector('[data-panel="waitlist"]');
 const headlinePhrases = document.querySelectorAll("[data-phrase]");
