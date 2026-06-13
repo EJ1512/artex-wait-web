@@ -1232,12 +1232,12 @@ input:focus {
   border: 0;
   border-radius: 4px;
   color: #fff;
-  background: var(--gold);
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
   box-shadow: none;
 }
 
 .waitlist-form .button.primary:hover {
-  background: var(--gold-soft);
+  background: linear-gradient(135deg, #f4d89e, #dda94a);
   box-shadow: none;
 }
 
@@ -1270,7 +1270,7 @@ input:focus {
 .site-footer a {
   border: 0;
   padding: 0;
-  color: var(--text);
+  color: var(--gold-soft);
   background: transparent;
   font: inherit;
   text-decoration: none;
