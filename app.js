@@ -23,7 +23,7 @@ if (typeof panelModeQuery.addEventListener === "function") {
 const SUPABASE_URL = "https://epbvkvbjqjaipbnhlshr.supabase.co";
 const SUPABASE_PUBLIC_KEY = "sb_publishable_C_3JNhKS1CiOTZAhv7Vldg_St0-K3Nr";
 const WAITLIST_SOURCE = "artex_landing_page";
-const WAITLIST_INTEREST = "General ArtEx waitlist";
+const WAITLIST_INTEREST = "General Artex waitlist";
 
 // Mirrors the Supabase RLS insert policy so invalid input fails fast client-side.
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -615,7 +615,7 @@ if (shareButton && shareLabel) {
     const link = window.location.origin + window.location.pathname;
     try {
       if (navigator.share) {
-        await navigator.share({ title: "ArtEx", text: "Trade artists before they blow up.", url: link });
+        await navigator.share({ title: "Artex", text: "Trade artists before they blow up.", url: link });
         return;
       }
       await navigator.clipboard.writeText(link);

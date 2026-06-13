@@ -1,6 +1,6 @@
-# ArtEx Waitlist Webpage
+# Artex Waitlist Webpage
 
-Standalone static waitlist page for ArtEx. Pure black theme with a faint
+Standalone static waitlist page for Artex. Pure black theme with a faint
 golden glow, minimal futuristic styling, and a live artist trend preview.
 
 ## Files
