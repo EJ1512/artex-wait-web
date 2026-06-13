@@ -39,7 +39,7 @@ with check (
   email = lower(email)
   and length(email) between 6 and 254
   and email ~* '^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$'
-  and interest = 'General Artex waitlist'
+  and interest = 'General ArtEx waitlist'
   and source = 'artex_landing_page'
   and (name is null or length(name) between 1 and 120)
 );

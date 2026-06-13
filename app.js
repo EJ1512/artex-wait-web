@@ -23,7 +23,8 @@ if (typeof panelModeQuery.addEventListener === "function") {
 const SUPABASE_URL = "https://epbvkvbjqjaipbnhlshr.supabase.co";
 const SUPABASE_PUBLIC_KEY = "sb_publishable_C_3JNhKS1CiOTZAhv7Vldg_St0-K3Nr";
 const WAITLIST_SOURCE = "artex_landing_page";
-const WAITLIST_INTEREST = "General Artex waitlist";
+// This value is an internal database contract used by the live RLS policy.
+const WAITLIST_INTEREST = "General ArtEx waitlist";
 
 // Mirrors the Supabase RLS insert policy so invalid input fails fast client-side.
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -534,7 +535,8 @@ async function joinWaitlist(payload) {
   });
 
   if (!response.ok && response.status !== 409) {
-    throw new Error("Waitlist insert failed.");
+    const details = await response.text();
+    throw new Error(`Waitlist insert failed (${response.status}): ${details || "Unknown Supabase error"}`);
   }
 
   return { preview: false };
