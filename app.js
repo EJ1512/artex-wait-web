@@ -741,10 +741,11 @@ if (radarPolygon) {
   const RADAR_CX = 230;
   const RADAR_CY = 165;
   const RADAR_R = 120;
+  const RADAR_MOTION_SPEED = 0.38;
   const RADAR_ANGLES = [90, 30, -30, -90, -150, 150].map((deg) => (deg * Math.PI) / 180);
 
   const radarFrame = (now) => {
-    const t = now / 1000;
+    const t = (now / 1000) * RADAR_MOTION_SPEED;
     const points = RADAR_ANGLES.map((angle, index) => {
       const sway =
         0.55 +
@@ -767,6 +768,175 @@ if (radarPolygon) {
 // Cards fade by distance from the feed's vertical center with a fully
 // bright zone in the middle, so the card riding the flow line stays in
 // focus while neighbours dim toward the edges. No transforms, no warping.
+// Market-signal instrument between the input and quote feeds.
+const signalInstrument = document.querySelector("[data-signal-instrument]");
+if (signalInstrument) {
+  const context = signalInstrument.getContext("2d");
+  const instrumentPanel = signalInstrument.closest("[data-panel]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let instrumentWidth = 0;
+  let instrumentHeight = 0;
+  let instrumentDpr = 1;
+
+  const rgba = (rgb, alpha) => `rgba(${rgb}, ${alpha})`;
+  const GOLD = "240, 207, 139";
+  const PALE = "244, 239, 228";
+  const PROFIT = "145, 223, 170";
+
+  const resizeInstrument = () => {
+    const bounds = signalInstrument.getBoundingClientRect();
+    instrumentWidth = Math.max(1, bounds.width);
+    instrumentHeight = Math.max(1, bounds.height);
+    instrumentDpr = Math.min(2, window.devicePixelRatio || 1);
+    signalInstrument.width = Math.round(instrumentWidth * instrumentDpr);
+    signalInstrument.height = Math.round(instrumentHeight * instrumentDpr);
+    context.setTransform(instrumentDpr, 0, 0, instrumentDpr, 0, 0);
+  };
+
+  const strokeCurve = (points, color, width, blur = 0) => {
+    if (points.length < 2) return;
+    context.save();
+    context.beginPath();
+    context.moveTo(points[0].x, points[0].y);
+    for (let index = 1; index < points.length - 1; index += 1) {
+      const midpointX = (points[index].x + points[index + 1].x) / 2;
+      const midpointY = (points[index].y + points[index + 1].y) / 2;
+      context.quadraticCurveTo(points[index].x, points[index].y, midpointX, midpointY);
+    }
+    const last = points[points.length - 1];
+    context.lineTo(last.x, last.y);
+    context.strokeStyle = color;
+    context.lineWidth = width;
+    context.lineCap = "round";
+    context.lineJoin = "round";
+    if (blur) {
+      context.shadowColor = color;
+      context.shadowBlur = blur;
+    }
+    context.stroke();
+    context.restore();
+  };
+
+  const pointAlongCurve = (points, progress) => {
+    const scaledIndex = Math.max(0, Math.min(1, progress)) * (points.length - 1);
+    const index = Math.min(points.length - 2, Math.floor(scaledIndex));
+    const localProgress = scaledIndex - index;
+    const start = points[index];
+    const end = points[index + 1];
+    return {
+      x: start.x + (end.x - start.x) * localProgress,
+      y: start.y + (end.y - start.y) * localProgress,
+      angle: Math.atan2(end.y - start.y, end.x - start.x),
+    };
+  };
+
+  const drawInstrument = (now) => {
+    if (!instrumentWidth || !instrumentHeight) return;
+
+    const motionScale = reducedMotion.matches ? 0.28 : 1;
+    const time = (now / 1000) * motionScale;
+    const width = instrumentWidth;
+    const height = instrumentHeight;
+    const centerY = height / 2;
+    const coreLeft = width * 0.25;
+    const coreRight = width * 0.72;
+
+    context.clearRect(0, 0, width, height);
+
+    const laneYs = [0.28, 0.5, 0.72].map((ratio) => height * ratio);
+    laneYs.forEach((startY, index) => {
+      const lanePoints = [];
+      const laneSamples = 28;
+      for (let sample = 0; sample < laneSamples; sample += 1) {
+        const progress = sample / (laneSamples - 1);
+        const eased = progress * progress * (3 - 2 * progress);
+        lanePoints.push({
+          x: progress * coreLeft,
+          y: startY + (centerY - startY) * eased,
+        });
+      }
+
+      const laneGradient = context.createLinearGradient(0, 0, coreLeft, 0);
+      laneGradient.addColorStop(0, rgba(PALE, 0));
+      laneGradient.addColorStop(0.2, rgba(PALE, 0.07));
+      laneGradient.addColorStop(0.78, rgba(PALE, 0.12));
+      laneGradient.addColorStop(1, rgba(GOLD, 0.36));
+      strokeCurve(lanePoints, laneGradient, 1);
+
+      const phase = (time * (0.105 + index * 0.006) + index * 0.31) % 1;
+      const packet = pointAlongCurve(lanePoints, phase);
+      const alpha = Math.sin(Math.PI * phase);
+      const tickWidth = 12 + index * 2;
+      context.save();
+      context.translate(packet.x, packet.y);
+      context.rotate(packet.angle);
+      context.fillStyle = rgba(index === 1 ? GOLD : PALE, 0.26 + alpha * 0.58);
+      context.shadowColor = rgba(GOLD, 0.42);
+      context.shadowBlur = 5;
+      context.fillRect(-tickWidth / 2, -0.75, tickWidth, 1.5);
+      context.restore();
+    });
+
+    const wavePoints = [];
+    const sampleCount = 80;
+    for (let index = 0; index < sampleCount; index += 1) {
+      const progress = index / (sampleCount - 1);
+      const x = coreLeft + progress * (coreRight - coreLeft);
+      const envelope = Math.sin(Math.PI * progress);
+      const movement =
+        Math.sin(progress * Math.PI * 5.2 + time * 0.78) * 7.5 +
+        Math.sin(progress * Math.PI * 10 - time * 0.38) * 1.4;
+      wavePoints.push({ x, y: centerY + movement * envelope });
+    }
+
+    const outputPoints = [];
+    const outputSamples = width < 360 ? 24 : 36;
+    for (let index = 0; index < outputSamples; index += 1) {
+      const progress = index / (outputSamples - 1);
+      const x = coreRight + progress * (width - coreRight);
+      const eased = progress * progress * (3 - 2 * progress);
+      const trend = -12 * eased;
+      const envelope = Math.sin(Math.PI * progress);
+      const noise =
+        Math.sin(progress * Math.PI * 3.8 + time * 0.52) * 2.8 +
+        Math.sin(progress * Math.PI * 7.5 - time * 0.26) * 0.8;
+      outputPoints.push({ x, y: centerY + trend + noise * envelope });
+    }
+
+    const completePath = wavePoints.concat(outputPoints.slice(1));
+    strokeCurve(completePath, rgba(PALE, 0.05), 4, 4);
+    strokeCurve(wavePoints, rgba(GOLD, 0.08), 4.5, 5);
+    strokeCurve(wavePoints, rgba(GOLD, 0.82), 1.25, 1.5);
+    strokeCurve(outputPoints, rgba(PROFIT, 0.08), 4.5, 5);
+    strokeCurve(outputPoints, rgba(PROFIT, 0.78), 1.25, 1.5);
+
+    const signalPhase = (time * 0.07) % 1;
+    const signalPoint = pointAlongCurve(completePath, signalPhase);
+    const signalColor = signalPhase < wavePoints.length / completePath.length ? GOLD : PROFIT;
+    context.save();
+    context.translate(signalPoint.x, signalPoint.y);
+    context.rotate(signalPoint.angle);
+    context.fillStyle = rgba(signalColor, 0.88);
+    context.shadowColor = rgba(signalColor, 0.46);
+    context.shadowBlur = 5;
+    context.fillRect(-4, -1, 8, 2);
+    context.restore();
+  };
+
+  const instrumentFrame = (now) => {
+    const panelIsVisible = !usePanels || instrumentPanel?.classList.contains("is-active");
+    if (!document.hidden && panelIsVisible) drawInstrument(now);
+    window.requestAnimationFrame(instrumentFrame);
+  };
+
+  resizeInstrument();
+  window.addEventListener("resize", resizeInstrument);
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(resizeInstrument).observe(signalInstrument);
+  }
+  window.requestAnimationFrame(instrumentFrame);
+}
+
 const cardFeeds = Array.from(document.querySelectorAll(".signal-feed"));
 if (cardFeeds.length) {
   const feedStates = cardFeeds.map((feed) => {
